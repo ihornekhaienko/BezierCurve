@@ -1,0 +1,133 @@
+﻿<Window x:Class="Art.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Art"
+        mc:Ignorable="d"
+        Title="I Hate Geometry" Height="450" Width="800" x:Name="window" WindowState="Maximized" KeyDown="window_KeyDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="optionsTab" Panel.ZIndex="1" Grid.Column="0">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="3">Euclidean</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Padding="5">
+                            <GroupBox.Header>
+                                <Label Content="Offset"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <Label Content="dx"/>
+                                <TextBox x:Name="dxTB" PreviewKeyDown="KeyPress" Text="0"/>
+                                <Label Content="dy"/>
+                                <TextBox x:Name="dyTB" PreviewKeyDown="KeyPress" Text="0"/>
+                                <Button x:Name="offsetButton" Content="Offset" Margin="10,10,10,10" Click="offsetButton_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Padding="5">
+                            <GroupBox.Header>
+                                <Label Content="Scale"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <TextBox x:Name="scaleTB" PreviewKeyDown="KeyPress" TextChanged="scaleTB_TextChanged"/>
+                                <Slider x:Name="scaleSlider" Value="1" Minimum="0.1" Maximum="2" Height="25" Margin="0,5,0,0"
+                                    IsSelectionRangeEnabled="True" TickFrequency="0.1" TickPlacement="BottomRight" ValueChanged="scaleSlider_ValueChanged"/>
+                                <Button x:Name="scaleButton" Content="Scale" Margin="10,10,10,10" Click="scaleButton_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Padding="5">
+                            <GroupBox.Header>
+                                <Label Content="Rotation"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <Label Content="x"/>
+                                <TextBox x:Name="xTB" PreviewKeyDown="KeyPress" Text="0"/>
+                                <Label Content="y"/>
+                                <TextBox x:Name="yTB" PreviewKeyDown="KeyPress" Text="0"/>
+                                <Label Content="angle"/>
+                                <TextBox x:Name="angleTB" PreviewKeyDown="KeyPress" TextChanged="angleTB_TextChanged"/>
+                                <Slider x:Name="angleSlider" Minimum="0" Maximum="360" Height="25" Margin="0,5,0,0"
+                                    IsSelectionRangeEnabled="True" TickFrequency="30" TickPlacement="BottomRight" ValueChanged="angleSlider_ValueChanged"/>
+                                <Button x:Name="rotateButton" Content="Rotate" Margin="10,10,10,10" Click="rotateButton_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <Button x:Name="gridButton" Content="Build grid" Margin="10,10,10,10" Click="gridButton_Click"/>
+                        <Button x:Name="planeButton" Content="Build plane" Margin="10,10,10,10" Click="planeButton_Click"/>
+                        <Button x:Name="sharkButton" Content="Build shark" Margin="10,10,10,10" Click="sharkButton_Click"/>
+                        <Button x:Name="defaultButton" Content="Set Defaults" Margin="10,10,10,10" Click="defaultButton_Click"/>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="3">Drawing</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <Label Content="Mode"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <RadioButton x:Name="drawRB" GroupName="Mode" Content="Drawing" IsChecked="True" />
+                                <RadioButton x:Name="dragRB" GroupName="Mode" Content="Dragging" />
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <Label Content="Bezier order"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <RadioButton x:Name="secondRB" GroupName="Drawer" Content="Second" IsChecked="True" />
+                                <RadioButton x:Name="thirdRB" GroupName="Drawer" Content="Third" />
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <Label Content="Line mode"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <RadioButton x:Name="newRB" GroupName="Line" Content="New" IsChecked="True" />
+                                <RadioButton x:Name="continueRB" GroupName="Line" Content="Continue" />
+                                <CheckBox x:Name="smoothCB" Content="Smooth" IsChecked="False"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <Label Content="Picture"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <Label Content="scale x"/>
+                                <TextBox x:Name="xImageTB" PreviewKeyDown="KeyPress" Text="1"/>
+                                <Label Content="scale y"/>
+                                <TextBox x:Name="yImageTB" PreviewKeyDown="KeyPress" Text="1"/>
+                                <Button x:Name="loadPicture" Content="Load Picture" Margin="10,10,10,10" Click="loadPicture_Click"/>
+                                <Button x:Name="erasePicture" Content="Erase" Margin="10,10,10,10" Click="erasePicture_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <Label Content="Animation"/>
+                            </GroupBox.Header>
+                            <StackPanel>
+                                <Button x:Name="animeButton" Content="Animate" Margin="10,10,10,10" Click="animeButton_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+        <Canvas Name="grid" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="Grid_Loaded" Panel.ZIndex="0" MouseDown="grid_MouseDown" MouseMove="grid_MouseMove" MouseUp="grid_MouseUp">
+            <Canvas.Background>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Canvas.Background>
+        </Canvas>
+    </Grid>
+</Window>
