@@ -38,5 +38,5 @@ Shark picture
 ![alt text](Examples/4.PNG)
 Transformations
 
-![alt text](Examples/5.GIF)
+![alt text](Examples/5.gif)
 Animation
